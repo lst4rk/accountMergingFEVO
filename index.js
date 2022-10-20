@@ -61,10 +61,16 @@ function mergeAccounts(accounts) {
 
         }
         // pushes account obj to returning array
-        mergedAccountsArr.push(newAccObj);
+        mergedAccountsArr.push((newAccObj));
 
     })
-    return mergedAccountsArr;
+
+    // returns same structure as in instructions.txt example output:
+    // return mergedAccountsArr
+
+    // returns JSON structure
+    return JSON.stringify(mergedAccountsArr, undefined, 2);
+
 }
 
 
