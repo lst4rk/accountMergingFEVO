@@ -1,5 +1,7 @@
 // import JSON data from accounts.json
-const accountsData = require('./accounts.json');
+import accountsData from './accounts.json' assert { type: "json" }
+
+mergeAccounts(accountsData);
 
 function mergeAccounts(accounts){
     // initialize empty array to console.log after complete merge event
@@ -9,9 +11,10 @@ function mergeAccounts(accounts){
     // iterate through objects for non-processed accounts (isHandled = false)
     findNonHandledAcc(accounts, peopleArr);
     // return JSON structure as specified in instructions of instructions.txt 
-    // console.log(JSON.stringify(peopleArr, undefined, 2));
-    // return same structure as in instructions.txt example output
-    console.log(peopleArr);
+    console.log(JSON.stringify(peopleArr, undefined, 2));
+    
+        // to return same structure as shown in example output of instructions.txt:
+        // console.log(peopleArr);
 }
 
 function isHandled(account) {
@@ -24,7 +27,6 @@ function findNonHandledAcc(accounts, peopleArr){
         if (account.isHandled) return;
         createNewPerson(account, accArr, peopleArr);
     })
-
 }
 
 function createNewPerson(account, accArr, peopleArr){
@@ -33,9 +35,9 @@ function createNewPerson(account, accArr, peopleArr){
         emails: account.emails,
         name: account.name,
     };
-    // mark account as now handled
-    isHandled(account);
 
+    // mark current account as now handled
+    isHandled(account);
     // loop through emails within current account
     matchEmails(newPersonObj, accArr, peopleArr);
 }
@@ -53,7 +55,6 @@ function matchEmails(newPersonObj, accArr, peopleArr){
 function compareAllEmails(emailArr, newPersonObj, accArr){
     while (emailArr.length > 0){
         let email = emailArr.shift();  
-          
         // for every email in ref account, create array of accounts that haven't been processed and have matching emails to ref email
         findMatchingAndUnhandled(email, emailArr, newPersonObj, accArr);
     }
@@ -61,7 +62,6 @@ function compareAllEmails(emailArr, newPersonObj, accArr){
 
 function findMatchingAndUnhandled(email, emailArr, newPersonObj, accArr){
     let acctsToMerge = accArr.filter(acc => !acc.isHandled && acc.emails.includes(email));
-
     // using array of matching accounts, combine application and email data to newPersonObj
     combineAccountData(emailArr, newPersonObj, acctsToMerge);
 }
@@ -83,7 +83,7 @@ function mergeApplications(newPersonObj, accToMerge){
     // add application # and put in increasing order
     newPersonObj.applications.push(String(accToMerge.application))
     if (newPersonObj.applications.length >= 1) {
-        newPersonObj.applications.sort((a,b) => a-b)
+        newPersonObj.applications.sort((a,b) => a-b);
     }
 }
 
@@ -100,5 +100,3 @@ function addNewPerson(newPersonObj, peopleArr) {
     // add new fully merged and unique person to array of people objects
     peopleArr.push((newPersonObj));
 }
-
-mergeAccounts(accountsData)
