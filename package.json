@@ -1,7 +1,6 @@
 {
   "name": "accountmerging_stark",
   "version": "1.0.0",
-  "type": "module",
   "description": "Take home challenge for FEVO. Recieved on 10/19/2022",
   "main": "index.js",
   "scripts": {
