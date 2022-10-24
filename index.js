@@ -11,8 +11,9 @@ function mergeAccounts(accounts) {
 
     findAcctsToMerge(accounts);
 
-    console.log(JSON.stringify(peopleArr, undefined, 2));     // return array of people data in JSON structure as requested at (./instructions.txt):14
+    // return JSON.stringify(peopleArr, undefined, 2);     // return array of people data in JSON structure as requested at (./instructions.txt):14
     // console.log(peopleArr);                                // to return same structure as shown at (./instructions.txt):46
+    return peopleArr;
 }
 
 function markHandled(account) {
@@ -96,3 +97,5 @@ function addNewPerson(newPersonObj) {
     // add new fully merged and unique person to array of people objects
     peopleArr.push((newPersonObj));
 }
+
+module.exports = mergeAccounts;

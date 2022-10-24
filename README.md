@@ -1,4 +1,4 @@
 # FEVO Takehome Challenge
 
-## To run
+## Commands
 `npm start` in terminal
