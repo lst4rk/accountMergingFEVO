@@ -1,4 +1,6 @@
 # FEVO Takehome Challenge
 
 ## Commands
-`npm start` in terminal
+`npm install` to install relevant dependencies
+`npm start` to run
+`npm test` for testing
